@@ -8,7 +8,7 @@ function LoginForm() {
   const { login } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const navigate = useNavigate();  // 👈 add this
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,10 +17,8 @@ function LoginForm() {
     try {
       const res = await axios.post("http://localhost:5000/api/auth/login", form);
 
-      // save token + user in context
       login(res.data.token, res.data.user);
 
-      // 👇 navigate immediately after login
       navigate("/dashboard");
 
     } catch (err) {
@@ -64,3 +62,4 @@ function LoginForm() {
 }
 
 export default LoginForm;
+
